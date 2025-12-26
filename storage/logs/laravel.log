@@ -6,3 +6,11 @@
 [stacktrace]
 #0 {main}
 "} 
+[2025-12-26 14:01:55] production.ERROR: Type of App\Filament\Central\Resources\TenantResource::$navigationIcon must be BackedEnum|string|null (as in class Filament\Resources\Resource) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of App\\Filament\\Central\\Resources\\TenantResource::$navigationIcon must be BackedEnum|string|null (as in class Filament\\Resources\\Resource) at C:\\codex\\helply\\app\\Filament\\Central\\Resources\\TenantResource.php:14)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-26 14:01:56] production.ERROR: Type of App\Filament\Central\Resources\TenantResource::$navigationIcon must be BackedEnum|string|null (as in class Filament\Resources\Resource) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of App\\Filament\\Central\\Resources\\TenantResource::$navigationIcon must be BackedEnum|string|null (as in class Filament\\Resources\\Resource) at C:\\codex\\helply\\app\\Filament\\Central\\Resources\\TenantResource.php:14)
+[stacktrace]
+#0 {main}
+"} 
