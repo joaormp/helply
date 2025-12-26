@@ -19,6 +19,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.4.0] - 2025-12-26 (dev branch)
+
+### Added
+- GitHub Actions CI/CD workflows (automated testing + code quality)
+- Pest PHP testing framework with PHPUnit configuration
+- TenantManagementTest suite with 4 tests
+- Comprehensive database seeders:
+  - PlanSeeder with 4 subscription tiers
+  - CentralUserSeeder for platform admins
+  - TenantSeeder with demo tenants (ACME, Globex)
+  - TenantDatabaseSeeder with sample data (users, customers, tickets, tags)
+- CustomerResource for Filament tenant panel
+- Customer avatar support with UI Avatars fallback
+- Automated testing on push and pull requests
+
+### Changed
+- Enhanced development workflow with automated testing
+- Improved data seeding for faster local setup
+
 ## [0.3.0] - 2025-12-26
 
 ### Added
