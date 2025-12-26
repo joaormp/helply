@@ -33,7 +33,7 @@ class Article extends Model
         parent::boot();
 
         static::creating(function ($article) {
-            if (!$article->slug) {
+            if (! $article->slug) {
                 $article->slug = Str::slug($article->title);
             }
         });

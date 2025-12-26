@@ -27,5 +27,6 @@ function createTenantWithDatabase()
             '--force' => true,
         ]);
     });
+
     return $tenant;
 }

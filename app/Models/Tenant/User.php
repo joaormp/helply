@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Models\Tenant;
 
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Panel;
 
 class User extends Authenticatable implements FilamentUser
 {

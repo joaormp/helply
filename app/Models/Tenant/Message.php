@@ -41,6 +41,7 @@ class Message extends Model
         if ($this->sender_type === 'customer') {
             return $this->belongsTo(Customer::class, 'sender_id');
         }
+
         return $this->belongsTo(User::class, 'sender_id');
     }
 }

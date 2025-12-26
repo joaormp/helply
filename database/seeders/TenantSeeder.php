@@ -11,7 +11,7 @@ class TenantSeeder extends Seeder
     public function run(): void
     {
         // Criar tenant demo apenas em ambiente local
-        if (!app()->environment('local')) {
+        if (! app()->environment('local')) {
             return;
         }
 

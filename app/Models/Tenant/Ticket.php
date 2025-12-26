@@ -40,7 +40,7 @@ class Ticket extends Model
         parent::boot();
 
         static::creating(function ($ticket) {
-            if (!$ticket->number) {
+            if (! $ticket->number) {
                 $ticket->number = static::generateTicketNumber();
             }
         });
@@ -50,7 +50,8 @@ class Ticket extends Model
     {
         $lastTicket = static::latest('id')->first();
         $nextId = $lastTicket ? $lastTicket->id + 1 : 1;
-        return 'HLP-' . str_pad((string)$nextId, 6, '0', STR_PAD_LEFT);
+
+        return 'HLP-'.str_pad((string) $nextId, 6, '0', STR_PAD_LEFT);
     }
 
     public function customer()

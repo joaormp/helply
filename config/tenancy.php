@@ -12,7 +12,7 @@ return [
 
     'central_domains' => [
         env('CENTRAL_DOMAIN', 'app.yourdomain.com'),
-        'www.' . env('CENTRAL_DOMAIN', 'app.yourdomain.com'),
+        'www.'.env('CENTRAL_DOMAIN', 'app.yourdomain.com'),
     ],
 
     'bootstrappers' => [

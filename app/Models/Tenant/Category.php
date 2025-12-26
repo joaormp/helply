@@ -30,7 +30,7 @@ class Category extends Model
         parent::boot();
 
         static::creating(function ($category) {
-            if (!$category->slug) {
+            if (! $category->slug) {
                 $category->slug = Str::slug($category->name);
             }
         });

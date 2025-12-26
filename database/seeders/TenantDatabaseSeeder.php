@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Tenant\Customer;
+use App\Models\Tenant\Tag;
 use App\Models\Tenant\Team;
 use App\Models\Tenant\Ticket;
 use App\Models\Tenant\User;
-use App\Models\Tenant\Tag;
 use Illuminate\Database\Seeder;
 
 class TenantDatabaseSeeder extends Seeder
@@ -27,7 +27,7 @@ class TenantDatabaseSeeder extends Seeder
         // Criar utilizadores/agentes
         $admin = User::create([
             'name' => 'Admin',
-            'email' => 'admin@' . tenant('slug') . '.com',
+            'email' => 'admin@'.tenant('slug').'.com',
             'password' => bcrypt('password'),
             'role' => 'admin',
             'team_id' => $team->id,
@@ -36,7 +36,7 @@ class TenantDatabaseSeeder extends Seeder
 
         $agent1 = User::create([
             'name' => 'Maria Silva',
-            'email' => 'maria@' . tenant('slug') . '.com',
+            'email' => 'maria@'.tenant('slug').'.com',
             'password' => bcrypt('password'),
             'role' => 'agent',
             'team_id' => $team->id,
@@ -45,7 +45,7 @@ class TenantDatabaseSeeder extends Seeder
 
         $agent2 = User::create([
             'name' => 'João Santos',
-            'email' => 'joao@' . tenant('slug') . '.com',
+            'email' => 'joao@'.tenant('slug').'.com',
             'password' => bcrypt('password'),
             'role' => 'agent',
             'team_id' => $team->id,
@@ -83,7 +83,7 @@ class TenantDatabaseSeeder extends Seeder
                 $priorities = ['low', 'medium', 'high', 'urgent'];
 
                 Ticket::create([
-                    'subject' => 'Ticket #' . $i . ' - ' . fake()->sentence(),
+                    'subject' => 'Ticket #'.$i.' - '.fake()->sentence(),
                     'status' => fake()->randomElement($statuses),
                     'priority' => fake()->randomElement($priorities),
                     'customer_id' => $customer->id,

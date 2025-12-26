@@ -66,7 +66,7 @@ class CustomerResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('avatar')
                     ->circular()
-                    ->defaultImageUrl(fn ($record) => 'https://ui-avatars.com/api/?name=' . urlencode($record->name)),
+                    ->defaultImageUrl(fn ($record) => 'https://ui-avatars.com/api/?name='.urlencode($record->name)),
 
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()

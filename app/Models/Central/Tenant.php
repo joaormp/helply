@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Models\Central;
 
-use Stancl\Tenancy\Database\Models\Tenant as BaseTenant;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Stancl\Tenancy\Contracts\TenantWithDatabase;
 use Stancl\Tenancy\Database\Concerns\HasDatabase;
 use Stancl\Tenancy\Database\Concerns\HasDomains;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Stancl\Tenancy\Database\Models\Tenant as BaseTenant;
 
 class Tenant extends BaseTenant implements TenantWithDatabase
 {

@@ -5,10 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Stancl\Tenancy\Events\TenancyInitialized;
-use Stancl\Tenancy\Events\TenancyEnded;
-use Stancl\Tenancy\Events\TenantCreated;
 use Stancl\Tenancy\Events\CreatingTenant;
+use Stancl\Tenancy\Events\TenantCreated;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 
@@ -35,7 +33,7 @@ class TenancyServiceProvider extends ServiceProvider
     {
         Event::listen(CreatingTenant::class, function (CreatingTenant $event) {
             // Set tenant database name
-            $event->tenant->database = config('tenancy.database.prefix') . $event->tenant->id;
+            $event->tenant->database = config('tenancy.database.prefix').$event->tenant->id;
         });
 
         Event::listen(TenantCreated::class, function (TenantCreated $event) {

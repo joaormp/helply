@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\InitializeTenancyByPath;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +26,6 @@ Route::prefix('t/{tenant}')
     ->group(function () {
         // Redirecionar para o painel Filament
         Route::get('/', function () {
-            return redirect('/t/' . tenant('slug'));
+            return redirect('/t/'.tenant('slug'));
         });
     });

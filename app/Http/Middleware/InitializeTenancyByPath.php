@@ -4,12 +4,13 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Stancl\Tenancy\Tenancy;
 use Stancl\Tenancy\Resolvers\PathTenantResolver;
+use Stancl\Tenancy\Tenancy;
 
 class InitializeTenancyByPath
 {
     protected $tenancy;
+
     protected $resolver;
 
     public function __construct(Tenancy $tenancy)
