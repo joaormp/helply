@@ -11,14 +11,14 @@ expect()->extend('toBeOne', function () {
     return $this->toBe(1);
 });
 
-function tenant()
+function createTestTenant()
 {
     return \App\Models\Central\Tenant::factory()->create();
 }
 
 function createTenantWithDatabase()
 {
-    $tenant = tenant();
+    $tenant = createTestTenant();
     $tenant->createDatabase();
     $tenant->run(function () {
         artisan()->call('migrate', [
