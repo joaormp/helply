@@ -5,8 +5,8 @@ namespace App\Filament\Tenant\Resources;
 use App\Filament\Tenant\Resources\CustomerResource\Pages;
 use App\Models\Tenant\Customer;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
 
@@ -20,9 +20,9 @@ class CustomerResource extends Resource
 
     protected static ?int $navigationSort = 2;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 Forms\Components\Section::make('Customer Information')
                     ->schema([
