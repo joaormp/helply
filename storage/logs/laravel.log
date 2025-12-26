@@ -2,3 +2,7 @@
 [stacktrace]
 #0 {main}
 "} 
+[2025-12-26 13:54:25] production.ERROR: Could not check compatibility between App\Filament\Central\Resources\TenantResource::form(Filament\Forms\Form $form): Filament\Forms\Form and Filament\Resources\Resource::form(Filament\Schemas\Schema $schema): Filament\Schemas\Schema, because class Filament\Forms\Form is not available {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Could not check compatibility between App\\Filament\\Central\\Resources\\TenantResource::form(Filament\\Forms\\Form $form): Filament\\Forms\\Form and Filament\\Resources\\Resource::form(Filament\\Schemas\\Schema $schema): Filament\\Schemas\\Schema, because class Filament\\Forms\\Form is not available at C:\\codex\\helply\\app\\Filament\\Central\\Resources\\TenantResource.php:24)
+[stacktrace]
+#0 {main}
+"} 
