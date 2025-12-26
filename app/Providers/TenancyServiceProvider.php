@@ -5,8 +5,11 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Stancl\JobPipeline\JobPipeline;
 use Stancl\Tenancy\Events\CreatingTenant;
 use Stancl\Tenancy\Events\TenantCreated;
+use Stancl\Tenancy\Jobs\CreateDatabase;
+use Stancl\Tenancy\Jobs\MigrateDatabase;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 
@@ -37,17 +40,10 @@ class TenancyServiceProvider extends ServiceProvider
         });
 
         Event::listen(TenantCreated::class, function (TenantCreated $event) {
-            // Create database
-            $event->tenant->createDatabase();
-
-            // Run migrations
-            $event->tenant->run(function () {
-                artisan()->call('migrate', [
-                    '--database' => 'pgsql_tenant',
-                    '--path' => 'database/migrations/tenant',
-                    '--force' => true,
-                ]);
-            });
+            JobPipeline::make([
+                CreateDatabase::class,
+                MigrateDatabase::class,
+            ])->send(fn() => $event->tenant)->dispatch();
         });
     }
 
