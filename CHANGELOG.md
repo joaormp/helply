@@ -8,17 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Initial project setup with Laravel 12
-- Multi-tenancy configuration with stancl/tenancy
-- Central database migrations (tenants, domains, plans, subscriptions, central_users)
-- Tenant database migrations (users, teams, customers, mailboxes, tickets, messages, etc.)
-- Central models (Tenant, Domain, Plan, Subscription, CentralUser)
-- Tenant models (User, Team, Customer, Ticket, Message, Mailbox, Tag, etc.)
-- Docker Compose setup for local development
-- Subdomain routing for tenant access
-- Environment configuration template
-- MIT License
-- README documentation (English and Portuguese)
 
 ### Changed
 
@@ -29,6 +18,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ### Security
+
+## [0.2.0] - 2025-12-26
+
+### Added
+- Filament 4 Central Panel Provider for platform administration
+- Filament 4 Tenant Panel Provider for helpdesk interface
+- TenantResource for Central panel (CRUD operations for tenants)
+- TicketResource for Tenant panel (full ticket management)
+- Vite configuration for frontend asset building
+- Tailwind CSS 4 and PostCSS configuration
+- Alpine.js 3 integration
+- Frontend resource files (app.css, app.js, bootstrap.js)
+
+### Changed
+- Updated README to use generic domain placeholders
+- Updated .env.example with configurable domain settings
+- Updated LICENSE to remove company references
+
+### Removed
+- Removed all company-specific references from public files
+- Removed internal documentation from repository
+- Removed development files from git tracking
 
 ## [0.1.0] - 2025-12-26
 
