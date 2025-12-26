@@ -3,25 +3,29 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
-use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
-use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
+use App\Http\Middleware\InitializeTenancyByPath;
 
 /*
 |--------------------------------------------------------------------------
-| Tenant Routes
+| Tenant Routes (Path-based)
 |--------------------------------------------------------------------------
 |
-| These routes are for tenant applications (*.helply.tailotek.dev)
-| and require tenant context.
+| Routes para tenants usando path-based routing:
+| - /t/{tenant}/ - Dashboard do tenant
+| - /t/{tenant}/... - Outras páginas do tenant
+|
+| O Filament Tenant Panel também usa estas rotas
 |
 */
 
-Route::middleware([
-    'web',
-    InitializeTenancyByDomain::class,
-    PreventAccessFromCentralDomains::class,
-])->group(function () {
-    Route::get('/', function () {
-        return 'Tenant: ' . tenant('id');
+Route::prefix('t/{tenant}')
+    ->middleware([
+        'web',
+        InitializeTenancyByPath::class,
+    ])
+    ->group(function () {
+        // Redirecionar para o painel Filament
+        Route::get('/', function () {
+            return redirect('/t/' . tenant('slug'));
+        });
     });
-});

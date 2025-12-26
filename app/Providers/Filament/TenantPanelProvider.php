@@ -16,8 +16,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
-use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
+use App\Http\Middleware\InitializeTenancyByPath;
 
 class TenantPanelProvider extends PanelProvider
 {
@@ -26,7 +25,7 @@ class TenantPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('tenant')
-            ->path('/')
+            ->path('/t/{tenant}')
             ->login()
             ->colors([
                 'primary' => Color::Indigo,
@@ -47,8 +46,7 @@ class TenantPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                InitializeTenancyByDomain::class,
-                PreventAccessFromCentralDomains::class,
+                InitializeTenancyByPath::class,
             ])
             ->authMiddleware([
                 Authenticate::class,
