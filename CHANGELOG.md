@@ -19,6 +19,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.3.0] - 2025-12-26
+
+### Added
+- Path-based routing support for easier local development
+- InitializeTenancyByPath middleware for /t/{tenant} URLs
+- .env.local.example for DBngin local development setup
+- .env.production.example for Coolify deployment reference
+- DEVELOPMENT.md comprehensive development guide
+- QUICKSTART.md for quick setup instructions
+- Support for dual routing modes (path-based local, subdomain production)
+
+### Changed
+- Updated TenantPanelProvider to support /t/{tenant} paths
+- Updated tenant routes to use path-based routing
+- Improved local development workflow documentation
+
 ## [0.2.0] - 2025-12-26
 
 ### Added
