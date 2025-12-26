@@ -59,7 +59,7 @@ Helply is a modern, multi-tenant helpdesk SaaS platform built with Laravel 12, F
 
 ```bash
 # Clone the repository
-git clone https://github.com/tailotek/helply.git
+git clone https://github.com/yourusername/helply.git
 cd helply
 
 # Install PHP dependencies
@@ -115,19 +115,30 @@ docker-compose exec app npm run build
 ### Architecture
 
 ```
-Central Domain (helply.tailotek.dev)
+Central Domain (app.yourdomain.com)
 ├── Tenant Management
 ├── Subscription Billing
 ├── Platform Administration
 └── Marketing Pages
 
-Tenant Domains (*.helply.tailotek.dev)
+Tenant Domains (*.app.yourdomain.com)
 ├── Helpdesk Dashboard
 ├── Ticket Management
 ├── Customer Management
 ├── Knowledge Base
 └── Settings
 ```
+
+### Configuration
+
+The application supports subdomain-based multi-tenancy. Configure your environment:
+
+```env
+CENTRAL_DOMAIN=app.yourdomain.com
+TENANT_SUBDOMAIN_SUFFIX=.app.yourdomain.com
+```
+
+Each tenant will be accessible at `{tenant-slug}.app.yourdomain.com`
 
 ### License
 
@@ -137,7 +148,6 @@ This project is open-sourced software licensed under the [MIT license](LICENSE).
 
 **João Panoias**
 - Email: joaopanoias@gmail.com
-- Company: Tailotek
 
 ---
 
@@ -187,7 +197,7 @@ Helply é uma plataforma SaaS moderna de helpdesk multi-tenant construída com L
 
 ```bash
 # Clonar o repositório
-git clone https://github.com/tailotek/helply.git
+git clone https://github.com/seunome/helply.git
 cd helply
 
 # Instalar dependências PHP
@@ -243,19 +253,30 @@ docker-compose exec app npm run build
 ### Arquitetura
 
 ```
-Domínio Central (helply.tailotek.dev)
+Domínio Central (app.seudominio.com)
 ├── Gestão de Tenants
 ├── Faturação de Subscrições
 ├── Administração da Plataforma
 └── Páginas de Marketing
 
-Domínios Tenant (*.helply.tailotek.dev)
+Domínios Tenant (*.app.seudominio.com)
 ├── Dashboard Helpdesk
 ├── Gestão de Tickets
 ├── Gestão de Clientes
 ├── Base de Conhecimento
 └── Definições
 ```
+
+### Configuração
+
+A aplicação suporta multi-tenancy baseado em subdomínios. Configure o ambiente:
+
+```env
+CENTRAL_DOMAIN=app.seudominio.com
+TENANT_SUBDOMAIN_SUFFIX=.app.seudominio.com
+```
+
+Cada tenant estará acessível em `{tenant-slug}.app.seudominio.com`
 
 ### Licença
 
@@ -265,7 +286,6 @@ Este projeto é software open-source licenciado sob a [licença MIT](LICENSE).
 
 **João Panoias**
 - Email: joaopanoias@gmail.com
-- Empresa: Tailotek
 
 ---
 

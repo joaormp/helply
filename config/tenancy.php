@@ -11,8 +11,8 @@ return [
     'domain_model' => Domain::class,
 
     'central_domains' => [
-        env('CENTRAL_DOMAIN', 'helply.tailotek.dev'),
-        'www.' . env('CENTRAL_DOMAIN', 'helply.tailotek.dev'),
+        env('CENTRAL_DOMAIN', 'app.yourdomain.com'),
+        'www.' . env('CENTRAL_DOMAIN', 'app.yourdomain.com'),
     ],
 
     'bootstrappers' => [
