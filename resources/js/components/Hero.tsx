@@ -1,44 +1,38 @@
 import React from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
-    <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Animated background gradients */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-300/30 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-300/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-blue-300/30 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-indigo-300/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column - Content */}
-          <div className="animate-fade-in">
-            <div className="inline-flex items-center space-x-2 bg-primary-100 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
-              </span>
-              <span>Now Available - Start Your Free Trial</span>
-            </div>
-
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              Customer Support{' '}
-              <span className="bg-gradient-to-r from-primary-500 to-indigo-600 bg-clip-text text-transparent">
-                Made Simple
+          <div className="animate-fade-in text-center lg:text-left">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+              {t.hero.title}{' '}
+              <span className="bg-gradient-to-r from-blue-500 to-indigo-600 bg-clip-text text-transparent">
+                {t.hero.titleHighlight}
               </span>
             </h1>
 
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Transform your customer service with Helply's modern helpdesk platform.
-              Multi-tenant, email integration, and powerful analytics - all in one place.
+            <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              {t.hero.subtitle}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
-                href="/register"
-                className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-primary-500 to-indigo-600 rounded-xl hover:from-primary-600 hover:to-indigo-700 transform hover:scale-105 transition-all shadow-xl hover:shadow-2xl"
+                href="/admin/login"
+                className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium text-white bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl hover:from-blue-600 hover:to-indigo-700 transform hover:scale-105 transition-all shadow-xl hover:shadow-2xl"
               >
-                <span className="relative z-10">Get Started Free</span>
+                <span className="relative z-10">{t.hero.cta}</span>
                 <svg
                   className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
                   fill="none"
@@ -55,10 +49,10 @@ export default function Hero() {
               </a>
 
               <a
-                href="#demo"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-gray-700 bg-white border-2 border-gray-200 rounded-xl hover:border-primary-500 hover:text-primary-600 transform hover:scale-105 transition-all shadow-lg hover:shadow-xl"
+                href="#features"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium text-gray-700 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:text-blue-600 transform hover:scale-105 transition-all shadow-lg hover:shadow-xl"
               >
-                Watch Demo
+                {t.hero.demo}
                 <svg
                   className="ml-2 w-5 h-5"
                   fill="none"
@@ -79,22 +73,6 @@ export default function Hero() {
                   />
                 </svg>
               </a>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-12 pt-12 border-t border-gray-200">
-              <div>
-                <div className="text-3xl font-bold text-gray-900">99.9%</div>
-                <div className="text-sm text-gray-600 mt-1">Uptime</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-gray-900">24/7</div>
-                <div className="text-sm text-gray-600 mt-1">Support</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-gray-900">10k+</div>
-                <div className="text-sm text-gray-600 mt-1">Happy Users</div>
-              </div>
             </div>
           </div>
 
