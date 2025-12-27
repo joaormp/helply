@@ -33,9 +33,12 @@ A modern, multi-tenant helpdesk platform built with Laravel 12, Filament 4.3, an
 
 ### 👥 Team Collaboration
 - **Team Management** - Organize agents into teams
+- **User Management** - Full agent/user CRUD with role assignments
 - **Role-Based Access** - Admin, Manager, Agent, Customer roles
 - **Team Performance Metrics** - Track team productivity
 - **Workload Distribution** - Balance tickets across teams
+- **Canned Replies** - Pre-written response templates with placeholders
+- **SLA Policies** - Service level agreements with response time tracking
 
 ### 📊 Analytics & Reporting
 - **Real-time Dashboards** - Central and Tenant panel dashboards
@@ -145,7 +148,11 @@ vendor/bin/pint
 - [x] Ticket management system
 - [x] Knowledge base
 - [x] Team management
+- [x] User management
+- [x] Canned replies
+- [x] SLA policies and tracking
 - [x] Dashboards and widgets
+- [x] Database seeders with demo data
 - [ ] Email-to-ticket conversion
 - [ ] Real-time notifications
 - [ ] Customer portal
@@ -154,8 +161,8 @@ vendor/bin/pint
 ## 📊 Status
 
 - **Development**: Active
-- **Progress**: ~90% complete
-- **Version**: 0.9.0 (Beta)
+- **Progress**: ~95% complete
+- **Version**: 0.9.5 (Beta)
 - **Target Launch**: Q1 2025
 
 ## 📄 License
