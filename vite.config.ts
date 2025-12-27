@@ -19,4 +19,24 @@ export default defineConfig({
             '@': path.resolve(__dirname, './resources/js'),
         },
     },
+    build: {
+        // Force new hash on every build for cache busting
+        rollupOptions: {
+            output: {
+                entryFileNames: `assets/[name]-[hash].js`,
+                chunkFileNames: `assets/[name]-[hash].js`,
+                assetFileNames: `assets/[name]-[hash].[ext]`
+            }
+        },
+        // Clear manifest cache
+        manifest: true,
+        // Generate source maps for debugging
+        sourcemap: false,
+    },
+    server: {
+        // Disable caching in dev mode
+        headers: {
+            'Cache-Control': 'no-store',
+        },
+    },
 });

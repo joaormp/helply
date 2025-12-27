@@ -112,28 +112,55 @@ Use o Filament UserResource no painel tenant após login.
 
 ## 🐛 Troubleshooting
 
+### ⚠️ Frontend não aparece formatado / Cache do Browser
+
+**SOLUÇÃO RÁPIDA:**
+1. **Pressione Ctrl+F5** no browser (força refresh sem cache)
+2. **Ou** abra DevTools (F12) → Network → marque "Disable cache"
+3. **Ou** use navegação anónima/privada (Ctrl+Shift+N)
+
+**SOLUÇÃO COMPLETA - Execute o script:**
+```bash
+rebuild-frontend.bat
+```
+
+Este script faz:
+- Limpa todos os caches do Laravel
+- Remove assets antigos
+- Limpa cache do Vite
+- Recompila assets com novos hashes
+- Cache busting automático
+
+**OU execute manualmente:**
+```bash
+# 1. Limpar caches do Laravel
+C:\Users\joaop\.config\herd\bin\php.bat artisan optimize:clear
+C:\Users\joaop\.config\herd\bin\php.bat artisan view:clear
+
+# 2. Remover assets antigos
+rm -rf public/build node_modules/.vite
+
+# 3. Recompilar
+npm run build
+
+# 4. Reiniciar servidor (se necessário)
+# Ctrl+C no terminal atual, depois:
+C:\Users\joaop\.config\herd\bin\php.bat artisan serve --host=0.0.0.0 --port=8000
+```
+
 ### Se o Herd estiver causando conflitos:
 ```bash
 # Parar o servidor atual
-# Ctrl+C no terminal ou:
 taskkill /F /IM php.exe
 
 # Reiniciar o servidor Laravel
 C:\Users\joaop\.config\herd\bin\php.bat artisan serve --host=0.0.0.0 --port=8000
 ```
 
-### Se precisar recompilar assets:
-```bash
-npm run build          # Produção
-npm run dev           # Desenvolvimento com hot reload
-```
-
-### Limpar cache se houver problemas:
-```bash
-C:\Users\joaop\.config\herd\bin\php.bat artisan optimize:clear
-C:\Users\joaop\.config\herd\bin\php.bat artisan config:clear
-C:\Users\joaop\.config\herd\bin\php.bat artisan route:clear
-```
+### Frontend com i18n (PT/EN):
+- Use o switcher **PT/EN** no canto superior direito
+- A preferência fica salva no localStorage
+- Para resetar: apague localStorage do browser (F12 → Application → Local Storage)
 
 ## 🎯 Próximos Passos
 
