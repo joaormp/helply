@@ -3925,3 +3925,39 @@ DETAIL:  Key (email)=(joaopanoias@gmail.com) already exists. at C:\\codex\\helpl
 #62 C:\\codex\\helply\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('C:\\\\codex\\\\helply...')
 #63 {main}
 "} 
+[2025-12-27 21:03:11] local.ERROR: Type of App\Filament\Central\Pages\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\Pages\Page) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of App\\Filament\\Central\\Pages\\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\\Pages\\Page) at C:\\codex\\helply\\app\\Filament\\Central\\Pages\\Dashboard.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-27 21:03:25] local.ERROR: Type of App\Filament\Central\Pages\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\Pages\Page) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of App\\Filament\\Central\\Pages\\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\\Pages\\Page) at C:\\codex\\helply\\app\\Filament\\Central\\Pages\\Dashboard.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-27 21:03:26] local.ERROR: Type of App\Filament\Central\Pages\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\Pages\Page) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of App\\Filament\\Central\\Pages\\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\\Pages\\Page) at C:\\codex\\helply\\app\\Filament\\Central\\Pages\\Dashboard.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-27 21:03:26] local.ERROR: Type of App\Filament\Central\Pages\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\Pages\Page) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of App\\Filament\\Central\\Pages\\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\\Pages\\Page) at C:\\codex\\helply\\app\\Filament\\Central\\Pages\\Dashboard.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-27 21:03:26] local.ERROR: Type of App\Filament\Central\Pages\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\Pages\Page) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of App\\Filament\\Central\\Pages\\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\\Pages\\Page) at C:\\codex\\helply\\app\\Filament\\Central\\Pages\\Dashboard.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-27 21:03:26] local.ERROR: Type of App\Filament\Central\Pages\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\Pages\Page) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of App\\Filament\\Central\\Pages\\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\\Pages\\Page) at C:\\codex\\helply\\app\\Filament\\Central\\Pages\\Dashboard.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-27 21:03:27] local.ERROR: Type of App\Filament\Central\Pages\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\Pages\Page) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of App\\Filament\\Central\\Pages\\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\\Pages\\Page) at C:\\codex\\helply\\app\\Filament\\Central\\Pages\\Dashboard.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-27 21:03:28] local.ERROR: Type of App\Filament\Central\Pages\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\Pages\Page) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of App\\Filament\\Central\\Pages\\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\\Pages\\Page) at C:\\codex\\helply\\app\\Filament\\Central\\Pages\\Dashboard.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-27 21:03:35] local.ERROR: Type of App\Filament\Central\Pages\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\Pages\Page) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of App\\Filament\\Central\\Pages\\Dashboard::$navigationIcon must be BackedEnum|string|null (as in class Filament\\Pages\\Page) at C:\\codex\\helply\\app\\Filament\\Central\\Pages\\Dashboard.php:7)
+[stacktrace]
+#0 {main}
+"} 
