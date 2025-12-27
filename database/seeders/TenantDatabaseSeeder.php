@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Tenant\CannedReply;
 use App\Models\Tenant\Customer;
 use App\Models\Tenant\Message;
+use App\Models\Tenant\SlaPolicy;
 use App\Models\Tenant\Tag;
 use App\Models\Tenant\Team;
 use App\Models\Tenant\Ticket;
@@ -173,6 +175,90 @@ class TenantDatabaseSeeder extends Seeder
                     $ticket->tags()->sync($tagIds);
                 }
             }
+        }
+
+        // Create canned replies
+        $cannedRepliesData = [
+            [
+                'name' => 'Welcome Message',
+                'subject' => 'Welcome to our support system!',
+                'body' => '<p>Hi {{customer_name}},</p><p>Thank you for contacting us! We have received your ticket <strong>{{ticket_number}}</strong> and one of our team members will get back to you shortly.</p><p>Best regards,<br>{{agent_name}}</p>',
+                'is_shared' => true,
+            ],
+            [
+                'name' => 'Request More Information',
+                'subject' => null,
+                'body' => '<p>Hi {{customer_name}},</p><p>Thank you for reaching out. To better assist you with ticket <strong>{{ticket_number}}</strong>, could you please provide us with some additional information:</p><ul><li>A detailed description of the issue</li><li>Any error messages you received</li><li>Steps to reproduce the problem</li></ul><p>This will help us resolve your issue more quickly.</p><p>Thank you,<br>{{agent_name}}</p>',
+                'is_shared' => true,
+            ],
+            [
+                'name' => 'Issue Resolved',
+                'subject' => 'Your issue has been resolved',
+                'body' => '<p>Hi {{customer_name}},</p><p>Great news! We have successfully resolved the issue reported in ticket <strong>{{ticket_number}}</strong>.</p><p>If you experience any further problems or have additional questions, please don\'t hesitate to reach out to us.</p><p>Thank you for your patience!</p><p>Best regards,<br>{{agent_name}}</p>',
+                'is_shared' => true,
+            ],
+            [
+                'name' => 'Password Reset Instructions',
+                'subject' => 'Password Reset Instructions',
+                'body' => '<p>Hi {{customer_name}},</p><p>To reset your password, please follow these steps:</p><ol><li>Go to our login page</li><li>Click on "Forgot Password"</li><li>Enter your email address</li><li>Check your email for the reset link</li><li>Follow the link and create a new password</li></ol><p>If you continue to experience issues, please let us know.</p><p>Best regards,<br>{{agent_name}}</p>',
+                'is_shared' => true,
+            ],
+            [
+                'name' => 'Escalation Notice',
+                'subject' => 'Your ticket has been escalated',
+                'body' => '<p>Hi {{customer_name}},</p><p>We wanted to let you know that ticket <strong>{{ticket_number}}</strong> has been escalated to our senior support team for further investigation.</p><p>A specialist will review your case and provide an update within the next 24 hours.</p><p>We appreciate your patience as we work to resolve this matter.</p><p>Best regards,<br>{{agent_name}}</p>',
+                'is_shared' => true,
+            ],
+        ];
+
+        foreach ($cannedRepliesData as $cannedReply) {
+            CannedReply::firstOrCreate(
+                ['name' => $cannedReply['name']],
+                $cannedReply
+            );
+        }
+
+        // Create SLA policies
+        $slaPoliciesData = [
+            [
+                'name' => 'Standard Support',
+                'description' => 'Standard SLA for normal priority tickets',
+                'first_response_time' => 240, // 4 hours
+                'resolution_time' => 1440, // 24 hours
+                'priority' => 'normal',
+                'is_active' => true,
+            ],
+            [
+                'name' => 'High Priority Support',
+                'description' => 'Enhanced SLA for high priority issues',
+                'first_response_time' => 120, // 2 hours
+                'resolution_time' => 480, // 8 hours
+                'priority' => 'high',
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Urgent Support',
+                'description' => 'Critical SLA for urgent tickets requiring immediate attention',
+                'first_response_time' => 30, // 30 minutes
+                'resolution_time' => 240, // 4 hours
+                'priority' => 'urgent',
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Low Priority Support',
+                'description' => 'Flexible SLA for low priority requests',
+                'first_response_time' => 480, // 8 hours
+                'resolution_time' => 2880, // 48 hours
+                'priority' => 'low',
+                'is_active' => true,
+            ],
+        ];
+
+        foreach ($slaPoliciesData as $slaPolicy) {
+            SlaPolicy::firstOrCreate(
+                ['name' => $slaPolicy['name']],
+                $slaPolicy
+            );
         }
 
         $this->command->info('Tenant database seeded successfully for: '.tenant('slug'));
