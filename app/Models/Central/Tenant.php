@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Models\Central;
 
+use Database\Factories\Central\TenantFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Stancl\Tenancy\Contracts\TenantWithDatabase;
 use Stancl\Tenancy\Database\Concerns\HasDatabase;
@@ -12,7 +14,7 @@ use Stancl\Tenancy\Database\Models\Tenant as BaseTenant;
 
 class Tenant extends BaseTenant implements TenantWithDatabase
 {
-    use HasDatabase, HasDomains, SoftDeletes;
+    use HasDatabase, HasDomains, HasFactory, SoftDeletes;
 
     protected $fillable = [
         'id',
@@ -49,5 +51,13 @@ class Tenant extends BaseTenant implements TenantWithDatabase
         return $this->hasOne(Subscription::class)
             ->where('status', 'active')
             ->latest();
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     */
+    protected static function newFactory(): TenantFactory
+    {
+        return TenantFactory::new();
     }
 }
