@@ -14,7 +14,7 @@ class CustomerResource extends Resource
 {
     protected static ?string $model = Customer::class;
 
-    protected static \BackedEnum | string | null $navigationIcon = 'heroicon-o-user-group';
+    protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-user-group';
 
     protected static ?string $navigationLabel = 'Customers';
 

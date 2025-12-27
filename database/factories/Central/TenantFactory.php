@@ -25,7 +25,7 @@ class TenantFactory extends Factory
             'email' => fake()->companyEmail(),
             'status' => 'active',
             'data' => [
-                'database' => config('tenancy.database.prefix') . $slug,
+                'database' => config('tenancy.database.prefix').$slug,
             ],
         ];
     }
