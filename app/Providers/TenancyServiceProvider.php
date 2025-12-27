@@ -43,7 +43,7 @@ class TenancyServiceProvider extends ServiceProvider
             JobPipeline::make([
                 CreateDatabase::class,
                 MigrateDatabase::class,
-            ])->send(fn() => $event->tenant)->dispatch();
+            ])->send(fn () => $event->tenant)->shouldBeQueued()->handle();
         });
     }
 

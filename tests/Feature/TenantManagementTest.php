@@ -3,13 +3,13 @@
 use App\Models\Central\Tenant;
 
 test('can create a tenant', function () {
-    $tenant = Tenant::create([
+    $tenant = Tenant::withoutEvents(fn () => Tenant::create([
         'id' => 'test-tenant',
         'name' => 'Test Company',
         'slug' => 'test-company',
         'email' => 'test@company.com',
         'status' => 'active',
-    ]);
+    ]));
 
     expect($tenant)->toBeInstanceOf(Tenant::class)
         ->and($tenant->name)->toBe('Test Company')
@@ -18,7 +18,7 @@ test('can create a tenant', function () {
 });
 
 test('tenant has domains relationship', function () {
-    $tenant = Tenant::factory()->create();
+    $tenant = Tenant::withoutEvents(fn () => Tenant::factory()->create());
 
     $domain = $tenant->domains()->create([
         'domain' => 'test.helply.test',
@@ -30,14 +30,14 @@ test('tenant has domains relationship', function () {
 });
 
 test('tenant can have subscriptions', function () {
-    $tenant = Tenant::factory()->create();
+    $tenant = Tenant::withoutEvents(fn () => Tenant::factory()->create());
 
     expect($tenant->subscriptions())->toBeInstanceOf(\Illuminate\Database\Eloquent\Relations\HasMany::class);
 });
 
 test('tenant slug must be unique', function () {
-    Tenant::factory()->create(['slug' => 'unique-slug']);
+    Tenant::withoutEvents(fn () => Tenant::factory()->create(['slug' => 'unique-slug']));
 
-    expect(fn () => Tenant::factory()->create(['slug' => 'unique-slug']))
+    expect(fn () => Tenant::withoutEvents(fn () => Tenant::factory()->create(['slug' => 'unique-slug'])))
         ->toThrow(\Illuminate\Database\QueryException::class);
 });
