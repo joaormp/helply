@@ -14,11 +14,9 @@ class MailboxResource extends Resource
 {
     protected static ?string $model = Mailbox::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-inbox';
+    protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-inbox';
 
     protected static ?string $navigationLabel = 'Mailboxes';
-
-    protected static ?string $navigationGroup = 'Settings';
 
     protected static ?int $navigationSort = 1;
 

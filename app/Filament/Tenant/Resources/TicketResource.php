@@ -29,20 +29,47 @@ class TicketResource extends Resource
                         Forms\Components\TextInput::make('subject')
                             ->required()
                             ->maxLength(500)
+                            ->label('Subject')
+                            ->placeholder('Brief description of the issue')
                             ->columnSpanFull(),
+
+                        Forms\Components\RichEditor::make('body')
+                            ->label('Description')
+                            ->placeholder('Detailed description of the issue...')
+                            ->helperText('Provide all relevant details about this ticket')
+                            ->columnSpanFull()
+                            ->toolbarButtons([
+                                'bold',
+                                'italic',
+                                'underline',
+                                'strike',
+                                'link',
+                                'bulletList',
+                                'orderedList',
+                                'h2',
+                                'h3',
+                                'blockquote',
+                                'codeBlock',
+                            ]),
 
                         Forms\Components\Select::make('customer_id')
                             ->relationship('customer', 'name')
                             ->searchable()
                             ->required()
+                            ->label('Customer')
+                            ->placeholder('Select or create a customer')
                             ->createOptionForm([
                                 Forms\Components\TextInput::make('name')
-                                    ->required(),
+                                    ->required()
+                                    ->label('Name'),
                                 Forms\Components\TextInput::make('email')
                                     ->email()
-                                    ->required(),
-                                Forms\Components\TextInput::make('phone'),
-                                Forms\Components\TextInput::make('company'),
+                                    ->required()
+                                    ->label('Email'),
+                                Forms\Components\TextInput::make('phone')
+                                    ->label('Phone'),
+                                Forms\Components\TextInput::make('company')
+                                    ->label('Company'),
                             ]),
 
                         Forms\Components\Select::make('status')
@@ -53,7 +80,9 @@ class TicketResource extends Resource
                                 'closed' => 'Closed',
                             ])
                             ->default('open')
-                            ->required(),
+                            ->required()
+                            ->label('Status')
+                            ->native(false),
 
                         Forms\Components\Select::make('priority')
                             ->options([
@@ -63,22 +92,59 @@ class TicketResource extends Resource
                                 'urgent' => 'Urgent',
                             ])
                             ->default('medium')
-                            ->required(),
+                            ->required()
+                            ->label('Priority')
+                            ->native(false),
+                    ])->columns(3),
 
+                Forms\Components\Section::make('Assignment')
+                    ->schema([
                         Forms\Components\Select::make('assigned_to')
                             ->relationship('assignedTo', 'name')
                             ->searchable()
-                            ->nullable(),
+                            ->preload()
+                            ->nullable()
+                            ->label('Assigned Agent')
+                            ->placeholder('Assign to an agent'),
 
                         Forms\Components\Select::make('team_id')
                             ->relationship('team', 'name')
                             ->searchable()
-                            ->nullable(),
+                            ->preload()
+                            ->nullable()
+                            ->label('Team')
+                            ->placeholder('Assign to a team'),
 
+                        Forms\Components\Select::make('tags')
+                            ->relationship('tags', 'name')
+                            ->multiple()
+                            ->searchable()
+                            ->preload()
+                            ->label('Tags')
+                            ->placeholder('Add tags for categorization')
+                            ->createOptionForm([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->label('Tag Name'),
+                                Forms\Components\TextInput::make('slug')
+                                    ->required()
+                                    ->label('Slug'),
+                                Forms\Components\ColorPicker::make('color')
+                                    ->required()
+                                    ->label('Color'),
+                            ]),
+                    ])->columns(3)
+                    ->collapsible(),
+
+                Forms\Components\Section::make('Additional Information')
+                    ->schema([
                         Forms\Components\Select::make('mailbox_id')
                             ->relationship('mailbox', 'name')
                             ->searchable()
-                            ->nullable(),
+                            ->preload()
+                            ->nullable()
+                            ->label('Mailbox')
+                            ->placeholder('Source mailbox'),
 
                         Forms\Components\Select::make('source')
                             ->options([
@@ -87,8 +153,12 @@ class TicketResource extends Resource
                                 'api' => 'API',
                             ])
                             ->default('web')
-                            ->required(),
-                    ]),
+                            ->required()
+                            ->label('Source')
+                            ->native(false),
+                    ])->columns(2)
+                    ->collapsible()
+                    ->collapsed(),
             ]);
     }
 
@@ -98,41 +168,96 @@ class TicketResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('number')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->weight('bold')
+                    ->copyable()
+                    ->label('#'),
 
                 Tables\Columns\TextColumn::make('subject')
                     ->searchable()
-                    ->limit(50),
+                    ->sortable()
+                    ->limit(50)
+                    ->wrap()
+                    ->weight('medium')
+                    ->description(fn ($record) => $record->body ? strip_tags(substr($record->body, 0, 100)).'...' : null),
 
                 Tables\Columns\TextColumn::make('customer.name')
                     ->searchable()
+                    ->sortable()
+                    ->label('Customer')
+                    ->icon('heroicon-o-user')
+                    ->toggleable(),
+
+                Tables\Columns\TextColumn::make('status')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'open' => 'danger',
+                        'pending' => 'warning',
+                        'resolved' => 'success',
+                        'closed' => 'gray',
+                        default => 'gray',
+                    })
+                    ->formatStateUsing(fn (string $state): string => ucfirst($state))
                     ->sortable(),
 
-                Tables\Columns\BadgeColumn::make('status')
-                    ->colors([
-                        'success' => 'resolved',
-                        'danger' => 'open',
-                        'warning' => 'pending',
-                        'secondary' => 'closed',
-                    ]),
+                Tables\Columns\TextColumn::make('priority')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'urgent' => 'danger',
+                        'high' => 'warning',
+                        'medium' => 'info',
+                        'low' => 'success',
+                        default => 'gray',
+                    })
+                    ->formatStateUsing(fn (string $state): string => ucfirst($state))
+                    ->sortable(),
 
-                Tables\Columns\BadgeColumn::make('priority')
-                    ->colors([
-                        'danger' => 'urgent',
-                        'warning' => 'high',
-                        'success' => 'low',
-                        'secondary' => 'medium',
-                    ]),
+                Tables\Columns\TextColumn::make('tags.name')
+                    ->badge()
+                    ->separator(',')
+                    ->label('Tags')
+                    ->toggleable()
+                    ->limitList(3)
+                    ->color('primary'),
 
                 Tables\Columns\TextColumn::make('assignedTo.name')
                     ->label('Assigned To')
                     ->sortable()
+                    ->placeholder('Unassigned')
+                    ->icon('heroicon-o-user-circle')
                     ->toggleable(),
+
+                Tables\Columns\TextColumn::make('team.name')
+                    ->label('Team')
+                    ->sortable()
+                    ->placeholder('No team')
+                    ->badge()
+                    ->toggleable()
+                    ->color('info'),
+
+                Tables\Columns\TextColumn::make('source')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'email' => 'warning',
+                        'web' => 'success',
+                        'api' => 'info',
+                        default => 'gray',
+                    })
+                    ->formatStateUsing(fn (string $state): string => ucfirst($state))
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
+                    ->since()
+                    ->description(fn ($record) => $record->created_at->format('M j, Y g:i A'))
                     ->toggleable(),
+
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->since()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('status')
@@ -141,7 +266,9 @@ class TicketResource extends Resource
                         'pending' => 'Pending',
                         'resolved' => 'Resolved',
                         'closed' => 'Closed',
-                    ]),
+                    ])
+                    ->multiple()
+                    ->label('Status'),
 
                 Tables\Filters\SelectFilter::make('priority')
                     ->options([
@@ -149,11 +276,41 @@ class TicketResource extends Resource
                         'medium' => 'Medium',
                         'high' => 'High',
                         'urgent' => 'Urgent',
-                    ]),
+                    ])
+                    ->multiple()
+                    ->label('Priority'),
+
+                Tables\Filters\SelectFilter::make('assigned_to')
+                    ->relationship('assignedTo', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->label('Assigned Agent'),
+
+                Tables\Filters\SelectFilter::make('team_id')
+                    ->relationship('team', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->label('Team'),
+
+                Tables\Filters\SelectFilter::make('tags')
+                    ->relationship('tags', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->multiple()
+                    ->label('Tags'),
+
+                Tables\Filters\SelectFilter::make('source')
+                    ->options([
+                        'email' => 'Email',
+                        'web' => 'Web',
+                        'api' => 'API',
+                    ])
+                    ->label('Source'),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

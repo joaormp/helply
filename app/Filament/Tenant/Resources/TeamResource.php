@@ -14,11 +14,9 @@ class TeamResource extends Resource
 {
     protected static ?string $model = Team::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-user-group';
 
     protected static ?string $navigationLabel = 'Teams';
-
-    protected static ?string $navigationGroup = 'Settings';
 
     protected static ?int $navigationSort = 2;
 
