@@ -40,10 +40,11 @@ class TenancyServiceProvider extends ServiceProvider
         });
 
         Event::listen(TenantCreated::class, function (TenantCreated $event) {
+            $tenant = $event->tenant;
             JobPipeline::make([
                 CreateDatabase::class,
                 MigrateDatabase::class,
-            ])->send(fn () => $event->tenant)->shouldBeQueued()->handle();
+            ])->send(fn () => $tenant)->shouldBeQueued()->dispatch();
         });
     }
 
