@@ -14,9 +14,9 @@ class Settings extends Page
 
     protected static ?int $navigationSort = 100;
 
-    protected static string $view = 'filament.tenant.pages.settings';
-
     protected static ?string $title = 'Settings';
+
+    protected string $view = 'filament.tenant.pages.settings';
 
     public ?array $data = [];
 

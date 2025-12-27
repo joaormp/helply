@@ -10,8 +10,6 @@ class Dashboard extends BaseDashboard
 
     protected static ?int $navigationSort = 0;
 
-    protected static string $view = 'filament.central.pages.dashboard';
-
     public function getWidgets(): array
     {
         return [

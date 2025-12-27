@@ -1,298 +1,183 @@
-# Helply - Multi-Tenant Helpdesk SaaS Platform
+# Helply - Modern Helpdesk Platform
 
-<div align="center">
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Laravel](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com)
+[![Filament](https://img.shields.io/badge/Filament-4.3-orange.svg)](https://filamentphp.com)
+[![PHP](https://img.shields.io/badge/PHP-8.4-purple.svg)](https://php.net)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue.svg)](https://postgresql.org)
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![PHP](https://img.shields.io/badge/PHP-8.4+-purple.svg)
-![Laravel](https://img.shields.io/badge/Laravel-12.x-red.svg)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue.svg)
+A modern, multi-tenant helpdesk platform built with Laravel 12, Filament 4.3, and React 19. Helply provides a complete customer support solution with ticket management, knowledge base, team collaboration, and SLA tracking.
 
-[English](#english) | [Português](#português)
+## ✨ Features
 
-</div>
+### 🎫 Ticket Management
+- **Smart Ticketing System** with auto-generated ticket numbers (HLP-XXXXXX)
+- **Multi-channel Support** - Email, web portal, and API
+- **Priority & Status Workflow** - Low, Normal, High, Urgent with customizable statuses
+- **Team Assignment** - Route tickets to specific teams or agents
+- **Tag System** - Organize and categorize tickets efficiently
+- **Advanced Filters** - Search by status, priority, agent, team, tags, and source
 
----
+### 📧 Email Integration
+- **IMAP/SMTP Configuration** - Connect your email accounts
+- **Email-to-Ticket Conversion** - Automatic ticket creation from emails (Coming soon)
+- **Email Templates** - Customizable email notifications
+- **Email Signatures** - Per-agent and global signatures
 
-## English
+### 📚 Knowledge Base
+- **Nested Categories** - Organize articles in hierarchical structure
+- **Rich Text Editor** - Create beautiful, formatted articles
+- **Public/Private Access** - Control article visibility
+- **Search Functionality** - Help customers find answers quickly
+- **Article Feedback** - Track article helpfulness
 
-### Overview
-
-Helply is a modern, multi-tenant helpdesk SaaS platform built with Laravel 12, Filament 4, and PostgreSQL. Each tenant gets their own isolated database for maximum security and performance.
-
-### Features
-
-- **Multi-tenancy** - Isolated databases per tenant
-- **Ticket Management** - Complete ticket lifecycle management
-- **Email Integration** - IMAP/SMTP support for email-to-ticket conversion
-- **Knowledge Base** - Self-service portal with articles and categories
+### 👥 Team Collaboration
 - **Team Management** - Organize agents into teams
-- **SLA Policies** - Track response and resolution times
-- **Canned Responses** - Quick replies for common questions
-- **Customer Portal** - Self-service for customers
-- **Reports & Analytics** - Agent performance tracking
+- **Role-Based Access** - Admin, Manager, Agent, Customer roles
+- **Team Performance Metrics** - Track team productivity
+- **Workload Distribution** - Balance tickets across teams
 
-### Tech Stack
+### 📊 Analytics & Reporting
+- **Real-time Dashboards** - Central and Tenant panel dashboards
+- **Performance Metrics** - Track response times, satisfaction rates
+- **Team Analytics** - Monitor team performance and productivity
+- **Custom Reports** - Generate insights from your data
 
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| PHP | 8.4+ | Runtime |
-| Laravel | 12.x | Framework |
-| Filament | 4.x | Admin Panel |
-| stancl/tenancy | 3.x | Multi-tenancy |
-| PostgreSQL | 17 | Database |
-| Redis | 7.x | Cache, Queues, Sessions |
-| Livewire | 3.x | Reactive Components |
-| Tailwind CSS | 4.x | Styling |
-| Alpine.js | 3.x | JS Interactions |
+### 🏢 Multi-Tenancy
+- **Database-per-Tenant** - Complete data isolation
+- **Subdomain Routing** - Automatic tenant detection
+- **Custom Domains** - Support for branded domains
+- **Subscription Management** - Flexible pricing plans
+
+### 🌍 Internationalization
+- **Bilingual Interface** - Full support for Portuguese and English
+- **Language Switcher** - Easy language toggle in UI
+- **LocalStorage Persistence** - Remember user language preference
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- PHP 8.4 or higher
+- PostgreSQL 17 or higher
+- Composer
+- Node.js 20.x and npm
+- Laravel Herd (recommended) or Laravel Valet/Homestead
 
 ### Installation
 
-#### Requirements
-
-- PHP 8.4 or higher
-- Composer
-- PostgreSQL 17
-- Redis 7.x
-- Node.js & npm
-
-#### Steps
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/helply.git
+1. **Clone the repository**
+\`\`\`bash
+git clone https://github.com/joaormp/helply.git
 cd helply
+\`\`\`
 
-# Install PHP dependencies
+2. **Install PHP dependencies**
+\`\`\`bash
 composer install
+\`\`\`
 
-# Install Node dependencies
+3. **Install Node dependencies**
+\`\`\`bash
 npm install
+\`\`\`
 
-# Copy environment file
+4. **Configure environment**
+\`\`\`bash
 cp .env.example .env
-
-# Generate application key
 php artisan key:generate
+\`\`\`
 
-# Configure your .env file with database credentials
+5. **Update .env with your database credentials**
+\`\`\`env
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=helply_central
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+\`\`\`
 
-# Run central database migrations
-php artisan migrate
+6. **Run migrations**
+\`\`\`bash
+# Central database migrations
+php artisan migrate --path=database/migrations/central
+\`\`\`
 
-# Run tenant migrations (if tenants exist)
-php artisan tenants:migrate
-
-# Seed database
-php artisan db:seed
-
-# Build assets
+7. **Build frontend assets**
+\`\`\`bash
 npm run build
+\`\`\`
 
-# Start development server
+8. **Start the development server**
+\`\`\`bash
 php artisan serve
-```
+\`\`\`
 
-Visit `http://localhost:8000` to access the application.
+9. **Create admin user**
+\`\`\`bash
+php artisan make:filament-user --panel=central
+\`\`\`
 
-#### Docker Installation
+Visit \`http://localhost:8000\` to see the landing page, and \`http://localhost:8000/admin/login\` for the admin panel.
 
-```bash
-# Start all services
-docker-compose up -d
+## 🧪 Testing
 
-# Install dependencies
-docker-compose exec app composer install
-docker-compose exec app npm install
+\`\`\`bash
+# Run all tests
+php artisan test
 
-# Run migrations
-docker-compose exec app php artisan migrate
-docker-compose exec app php artisan tenants:migrate
+# Run with coverage
+php artisan test --coverage
+\`\`\`
 
-# Build assets
-docker-compose exec app npm run build
-```
+## 📝 Code Style
 
-### Architecture
+This project uses [Laravel Pint](https://laravel.com/docs/pint) for code formatting:
 
-```
-Central Domain (app.yourdomain.com)
-├── Tenant Management
-├── Subscription Billing
-├── Platform Administration
-└── Marketing Pages
+\`\`\`bash
+vendor/bin/pint
+\`\`\`
 
-Tenant Domains (*.app.yourdomain.com)
-├── Helpdesk Dashboard
-├── Ticket Management
-├── Customer Management
-├── Knowledge Base
-└── Settings
-```
+## 🗺️ Roadmap
 
-### Configuration
+- [x] Multi-tenant architecture
+- [x] Ticket management system
+- [x] Knowledge base
+- [x] Team management
+- [x] Dashboards and widgets
+- [ ] Email-to-ticket conversion
+- [ ] Real-time notifications
+- [ ] Customer portal
+- [ ] REST API
 
-The application supports subdomain-based multi-tenancy. Configure your environment:
+## 📊 Status
 
-```env
-CENTRAL_DOMAIN=app.yourdomain.com
-TENANT_SUBDOMAIN_SUFFIX=.app.yourdomain.com
-```
+- **Development**: Active
+- **Progress**: ~90% complete
+- **Version**: 0.9.0 (Beta)
+- **Target Launch**: Q1 2025
 
-Each tenant will be accessible at `{tenant-slug}.app.yourdomain.com`
+## 📄 License
 
-### License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This project is open-sourced software licensed under the [MIT license](LICENSE).
-
-### Author
+## 👨‍💻 Author
 
 **João Panoias**
-- Email: joaopanoias@gmail.com
+- Email: [joaopanoias@gmail.com](mailto:joaopanoias@gmail.com)
+- GitHub: [@joaormp](https://github.com/joaormp)
+
+## 🙏 Acknowledgments
+
+- [Laravel](https://laravel.com) - The PHP framework for web artisans
+- [Filament](https://filamentphp.com) - Elegant admin panels for Laravel
+- [React](https://react.dev) - A JavaScript library for building user interfaces
+- [Tailwind CSS](https://tailwindcss.com) - A utility-first CSS framework
 
 ---
 
-## Português
-
-### Visão Geral
-
-Helply é uma plataforma SaaS moderna de helpdesk multi-tenant construída com Laravel 12, Filament 4 e PostgreSQL. Cada tenant tem sua própria base de dados isolada para máxima segurança e performance.
-
-### Funcionalidades
-
-- **Multi-tenancy** - Bases de dados isoladas por tenant
-- **Gestão de Tickets** - Gestão completa do ciclo de vida dos tickets
-- **Integração Email** - Suporte IMAP/SMTP para conversão email-para-ticket
-- **Base de Conhecimento** - Portal de self-service com artigos e categorias
-- **Gestão de Equipas** - Organização de agentes em equipas
-- **Políticas SLA** - Acompanhamento de tempos de resposta e resolução
-- **Respostas Rápidas** - Respostas predefinidas para questões comuns
-- **Portal Cliente** - Self-service para clientes
-- **Relatórios & Analytics** - Acompanhamento de performance de agentes
-
-### Stack Tecnológica
-
-| Tecnologia | Versão | Propósito |
-|------------|--------|-----------|
-| PHP | 8.4+ | Runtime |
-| Laravel | 12.x | Framework |
-| Filament | 4.x | Painel Admin |
-| stancl/tenancy | 3.x | Multi-tenancy |
-| PostgreSQL | 17 | Base de Dados |
-| Redis | 7.x | Cache, Filas, Sessões |
-| Livewire | 3.x | Componentes Reativos |
-| Tailwind CSS | 4.x | Estilos |
-| Alpine.js | 3.x | Interações JS |
-
-### Instalação
-
-#### Requisitos
-
-- PHP 8.4 ou superior
-- Composer
-- PostgreSQL 17
-- Redis 7.x
-- Node.js & npm
-
-#### Passos
-
-```bash
-# Clonar o repositório
-git clone https://github.com/seunome/helply.git
-cd helply
-
-# Instalar dependências PHP
-composer install
-
-# Instalar dependências Node
-npm install
-
-# Copiar ficheiro de ambiente
-cp .env.example .env
-
-# Gerar chave da aplicação
-php artisan key:generate
-
-# Configurar o ficheiro .env com credenciais da base de dados
-
-# Executar migrações da base de dados central
-php artisan migrate
-
-# Executar migrações tenant (se existirem tenants)
-php artisan tenants:migrate
-
-# Popular base de dados
-php artisan db:seed
-
-# Compilar assets
-npm run build
-
-# Iniciar servidor de desenvolvimento
-php artisan serve
-```
-
-Visite `http://localhost:8000` para aceder à aplicação.
-
-#### Instalação Docker
-
-```bash
-# Iniciar todos os serviços
-docker-compose up -d
-
-# Instalar dependências
-docker-compose exec app composer install
-docker-compose exec app npm install
-
-# Executar migrações
-docker-compose exec app php artisan migrate
-docker-compose exec app php artisan tenants:migrate
-
-# Compilar assets
-docker-compose exec app npm run build
-```
-
-### Arquitetura
-
-```
-Domínio Central (app.seudominio.com)
-├── Gestão de Tenants
-├── Faturação de Subscrições
-├── Administração da Plataforma
-└── Páginas de Marketing
-
-Domínios Tenant (*.app.seudominio.com)
-├── Dashboard Helpdesk
-├── Gestão de Tickets
-├── Gestão de Clientes
-├── Base de Conhecimento
-└── Definições
-```
-
-### Configuração
-
-A aplicação suporta multi-tenancy baseado em subdomínios. Configure o ambiente:
-
-```env
-CENTRAL_DOMAIN=app.seudominio.com
-TENANT_SUBDOMAIN_SUFFIX=.app.seudominio.com
-```
-
-Cada tenant estará acessível em `{tenant-slug}.app.seudominio.com`
-
-### Licença
-
-Este projeto é software open-source licenciado sob a [licença MIT](LICENSE).
-
-### Autor
-
-**João Panoias**
-- Email: joaopanoias@gmail.com
-
----
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## Support
-
-For support, email joaopanoias@gmail.com or open an issue on GitHub.
+<p align="center">Made with ❤️ by João Panoias</p>
+<p align="center">
+  <sub>🤖 Built with assistance from <a href="https://claude.com/claude-code">Claude Code</a></sub>
+</p>
