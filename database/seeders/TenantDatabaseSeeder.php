@@ -23,7 +23,7 @@ class TenantDatabaseSeeder extends Seeder
             ['name' => 'Support Team'],
             [
                 'description' => 'Main customer support team',
-                'active' => true,
+                'is_active' => true,
             ]
         );
 
@@ -31,7 +31,7 @@ class TenantDatabaseSeeder extends Seeder
             ['name' => 'Technical Team'],
             [
                 'description' => 'Technical support and engineering',
-                'active' => true,
+                'is_active' => true,
             ]
         );
 
@@ -141,11 +141,10 @@ class TenantDatabaseSeeder extends Seeder
 
                 $ticket = Ticket::create([
                     'subject' => fake()->sentence(),
-                    'description' => fake()->paragraph(3),
                     'status' => $status,
                     'priority' => $priority,
                     'customer_id' => $customerModel->id,
-                    'agent_id' => $status !== 'open' ? fake()->randomElement($agentModels)->id : null,
+                    'assigned_to' => $status !== 'open' ? fake()->randomElement($agentModels)->id : null,
                     'team_id' => fake()->randomElement([$supportTeam->id, $technicalTeam->id]),
                     'source' => $source,
                     'created_at' => now()->subDays(rand(1, 60)),
@@ -158,8 +157,9 @@ class TenantDatabaseSeeder extends Seeder
 
                     Message::create([
                         'ticket_id' => $ticket->id,
-                        'user_id' => $isFromAgent ? fake()->randomElement($agentModels)->id : null,
-                        'customer_id' => ! $isFromAgent ? $customerModel->id : null,
+                        'type' => $j === 0 ? 'original' : 'reply',
+                        'sender_type' => $isFromAgent ? 'agent' : 'customer',
+                        'sender_id' => $isFromAgent ? fake()->randomElement($agentModels)->id : $customerModel->id,
                         'body' => fake()->paragraph(2),
                         'is_internal' => false,
                         'created_at' => $ticket->created_at->addMinutes(rand(10, 1440 * $j)),
@@ -168,8 +168,9 @@ class TenantDatabaseSeeder extends Seeder
 
                 // Attach random tags (0-2 tags per ticket)
                 $ticketTags = fake()->randomElements($tags, rand(0, 2));
-                foreach ($ticketTags as $tag) {
-                    $ticket->tags()->attach($tag->id);
+                $tagIds = array_map(fn ($tag) => $tag->id, $ticketTags);
+                if (! empty($tagIds)) {
+                    $ticket->tags()->sync($tagIds);
                 }
             }
         }
