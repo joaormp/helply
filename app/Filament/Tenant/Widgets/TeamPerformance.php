@@ -7,7 +7,7 @@ use Filament\Widgets\ChartWidget;
 
 class TeamPerformance extends ChartWidget
 {
-    protected static ?string $heading = 'Team Performance';
+    protected ?string $heading = 'Team Performance';
 
     protected static ?int $sort = 4;
 
@@ -59,7 +59,7 @@ class TeamPerformance extends ChartWidget
         return 'bar';
     }
 
-    protected static ?string $pollingInterval = '60s';
+    protected ?string $pollingInterval = '60s';
 
     public function getDescription(): ?string
     {

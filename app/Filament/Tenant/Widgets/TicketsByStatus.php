@@ -7,7 +7,7 @@ use Filament\Widgets\ChartWidget;
 
 class TicketsByStatus extends ChartWidget
 {
-    protected static ?string $heading = 'Tickets by Status';
+    protected ?string $heading = 'Tickets by Status';
 
     protected static ?int $sort = 2;
 
@@ -53,7 +53,7 @@ class TicketsByStatus extends ChartWidget
         return 'pie';
     }
 
-    protected static ?string $pollingInterval = '60s';
+    protected ?string $pollingInterval = '60s';
 
     public function getDescription(): ?string
     {

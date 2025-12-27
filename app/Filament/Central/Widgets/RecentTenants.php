@@ -71,5 +71,5 @@ class RecentTenants extends BaseWidget
             ]);
     }
 
-    protected static ?string $pollingInterval = '30s';
+    protected ?string $pollingInterval = '30s';
 }

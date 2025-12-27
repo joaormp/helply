@@ -92,5 +92,5 @@ class TicketStatsOverview extends BaseWidget
         return round($avgMinutes / 60, 1).'h';
     }
 
-    protected static ?string $pollingInterval = '30s';
+    protected ?string $pollingInterval = '30s';
 }

@@ -7,7 +7,7 @@ use Filament\Widgets\ChartWidget;
 
 class SubscriptionsByPlan extends ChartWidget
 {
-    protected static ?string $heading = 'Subscriptions by Plan';
+    protected ?string $heading = 'Subscriptions by Plan';
 
     protected static ?int $sort = 4;
 
@@ -46,7 +46,7 @@ class SubscriptionsByPlan extends ChartWidget
         return 'doughnut';
     }
 
-    protected static ?string $pollingInterval = '60s';
+    protected ?string $pollingInterval = '60s';
 
     public function getDescription(): ?string
     {

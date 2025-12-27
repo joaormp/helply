@@ -3969,3 +3969,23 @@ DETAIL:  Key (email)=(joaopanoias@gmail.com) already exists. at C:\\codex\\helpl
 [stacktrace]
 #0 {main}
 "} 
+[2025-12-27 21:10:24] local.ERROR: Declaration of App\Filament\Central\Pages\Dashboard::getColumns(): array|string|int must be compatible with Filament\Pages\Dashboard::getColumns(): array|int {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Declaration of App\\Filament\\Central\\Pages\\Dashboard::getColumns(): array|string|int must be compatible with Filament\\Pages\\Dashboard::getColumns(): array|int at C:\\codex\\helply\\app\\Filament\\Central\\Pages\\Dashboard.php:23)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-27 21:13:02] local.ERROR: Declaration of App\Filament\Central\Pages\Dashboard::getColumns(): array|string|int must be compatible with Filament\Pages\Dashboard::getColumns(): array|int {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Declaration of App\\Filament\\Central\\Pages\\Dashboard::getColumns(): array|string|int must be compatible with Filament\\Pages\\Dashboard::getColumns(): array|int at C:\\codex\\helply\\app\\Filament\\Central\\Pages\\Dashboard.php:23)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-27 21:13:29] local.ERROR: Cannot redeclare non static Filament\Widgets\StatsOverviewWidget::$pollingInterval as static App\Filament\Central\Widgets\StatsOverview::$pollingInterval {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare non static Filament\\Widgets\\StatsOverviewWidget::$pollingInterval as static App\\Filament\\Central\\Widgets\\StatsOverview::$pollingInterval at C:\\codex\\helply\\app\\Filament\\Central\\Widgets\\StatsOverview.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-27 21:25:57] local.ERROR: Cannot redeclare non static Filament\Widgets\StatsOverviewWidget::$pollingInterval as static App\Filament\Central\Widgets\StatsOverview::$pollingInterval {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare non static Filament\\Widgets\\StatsOverviewWidget::$pollingInterval as static App\\Filament\\Central\\Widgets\\StatsOverview::$pollingInterval at C:\\codex\\helply\\app\\Filament\\Central\\Widgets\\StatsOverview.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2025-12-27 21:28:09] local.ERROR: Cannot redeclare non static Filament\Widgets\ChartWidget::$heading as static App\Filament\Central\Widgets\SubscriptionsByPlan::$heading {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare non static Filament\\Widgets\\ChartWidget::$heading as static App\\Filament\\Central\\Widgets\\SubscriptionsByPlan::$heading at C:\\codex\\helply\\app\\Filament\\Central\\Widgets\\SubscriptionsByPlan.php:8)
+[stacktrace]
+#0 {main}
+"} 

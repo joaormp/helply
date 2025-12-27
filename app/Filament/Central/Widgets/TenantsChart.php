@@ -7,7 +7,7 @@ use Filament\Widgets\ChartWidget;
 
 class TenantsChart extends ChartWidget
 {
-    protected static ?string $heading = 'Tenant Growth';
+    protected ?string $heading = 'Tenant Growth';
 
     protected static ?int $sort = 2;
 
@@ -44,7 +44,7 @@ class TenantsChart extends ChartWidget
         return 'line';
     }
 
-    protected static ?string $pollingInterval = '60s';
+    protected ?string $pollingInterval = '60s';
 
     public function getDescription(): ?string
     {
