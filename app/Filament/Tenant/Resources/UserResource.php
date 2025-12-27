@@ -3,7 +3,6 @@
 namespace App\Filament\Tenant\Resources;
 
 use App\Filament\Tenant\Resources\UserResource\Pages;
-use App\Models\Tenant\Team;
 use App\Models\Tenant\User;
 use Filament\Forms;
 use Filament\Resources\Resource;
