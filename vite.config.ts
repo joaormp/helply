@@ -28,8 +28,10 @@ export default defineConfig({
                 assetFileNames: `assets/[name]-[hash].[ext]`
             }
         },
-        // Clear manifest cache
-        manifest: true,
+        // Generate manifest in the root of build directory (not .vite subdirectory)
+        manifest: 'manifest.json',
+        // Output to public/build
+        outDir: 'public/build',
         // Generate source maps for debugging
         sourcemap: false,
     },
