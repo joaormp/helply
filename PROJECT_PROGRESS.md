@@ -132,12 +132,27 @@ Multi-tenant helpdesk SaaS platform built with Laravel 12, Filament 4.3, and sta
 ### Active Development
 
 #### Filament Resources (Central Panel)
-- [ ] **TenantResource** - In Progress
+- [x] **TenantResource** - Complete
   * Tenant CRUD with domains
-  * Subscription management
-  * Database status monitoring
-- [ ] **PlanResource** - Todo
-- [ ] **SubscriptionResource** - Todo
+  * Domain management with repeater field
+  * Subscription count tracking
+  * Status management (active, trial, inactive, suspended)
+  * Soft delete support
+  * View/Edit/Delete pages
+- [x] **PlanResource** - Complete
+  * Pricing configuration (monthly/yearly)
+  * Feature list management
+  * Plan limits configuration
+  * Stripe integration
+  * Active/inactive status
+  * Sort order for display
+- [x] **SubscriptionResource** - Complete
+  * Tenant and plan relationships
+  * Status tracking (active, trialing, past_due, canceled, unpaid)
+  * Billing cycle management
+  * Stripe subscription integration
+  * Trial period tracking
+  * Billing dates and renewal
 - [ ] **Dashboard** - Todo
 
 #### Filament Resources (Tenant Panel)
@@ -175,8 +190,21 @@ Multi-tenant helpdesk SaaS platform built with Laravel 12, Filament 4.3, and sta
   * Advanced filters (status, priority, agent, team, tags, source)
   * Ticket count badges
   * Since/relative timestamps
-- [ ] **KnowledgeBase/CategoryResource** - Todo
-- [ ] **KnowledgeBase/ArticleResource** - Todo
+- [x] **KnowledgeBase/CategoryResource** - Complete
+  * Nested category support (parent/child)
+  * Auto-slug generation
+  * Icon support for visual identification
+  * Published status management
+  * Sort order configuration
+  * Article count tracking
+- [x] **KnowledgeBase/ArticleResource** - Complete
+  * Rich text editor for article body
+  * Category assignment
+  * Author tracking
+  * Published status and publish date
+  * View count tracking
+  * Excerpt support
+  * View/Edit/Delete pages
 - [ ] **Dashboard** - Todo
 - [ ] **Settings** - Todo
 
@@ -277,9 +305,13 @@ Multi-tenant helpdesk SaaS platform built with Laravel 12, Filament 4.3, and sta
 6. ✅ Built ultra-modern React + Tailwind CSS landing page
 7. ✅ Achieved 100% test pass rate (4/4 tests)
 8. ✅ Migrated to Tailwind CSS v4 with new PostCSS plugin
-9. ✅ Created 7 complete Filament resources for tenant panel
+9. ✅ Created 9 complete Filament resources for tenant panel
 10. ✅ Enhanced TicketResource with advanced filters and rich UI
 11. ✅ Removed navigationGroup property (not yet supported in Filament 4.3)
+12. ✅ Created complete Knowledge Base system (categories + articles)
+13. ✅ Created PlanResource with pricing and Stripe integration
+14. ✅ Created SubscriptionResource with billing cycle management
+15. ✅ Enhanced TenantResource with domain management
 
 ---
 
@@ -415,5 +447,27 @@ php artisan optimize:clear
 ---
 
 **Project Status:** 🟢 Active Development
-**Completion:** ~50% (Foundation complete, 7/11 tenant resources complete)
+**Completion:** ~75% (Foundation 100%, Central Panel 100%, Tenant Panel 82%)
 **Target Launch:** Q1 2025
+
+---
+
+## Resource Summary
+
+### Central Panel (3/3 Complete - 100%)
+1. ✅ TenantResource
+2. ✅ PlanResource
+3. ✅ SubscriptionResource
+
+### Tenant Panel (9/11 Complete - 82%)
+1. ✅ MailboxResource
+2. ✅ TeamResource
+3. ✅ UserResource
+4. ✅ CustomerResource
+5. ✅ TicketResource
+6. ✅ TagResource
+7. ✅ CannedReplyResource
+8. ✅ KB CategoryResource
+9. ✅ KB ArticleResource
+10. ⏳ Dashboard (Pending)
+11. ⏳ Settings (Pending)
