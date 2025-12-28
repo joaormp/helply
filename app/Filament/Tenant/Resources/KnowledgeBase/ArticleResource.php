@@ -17,9 +17,11 @@ class ArticleResource extends Resource
 
     protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-document-text';
 
-    protected static ?string $navigationLabel = 'KB Articles';
+    protected static ?string $navigationLabel = 'Articles';
 
-    protected static ?int $navigationSort = 11;
+    protected static \UnitEnum|string|null $navigationGroup = 'Knowledge Base';
+
+    protected static ?int $navigationSort = 1;
 
     public static function form(Schema $schema): Schema
     {

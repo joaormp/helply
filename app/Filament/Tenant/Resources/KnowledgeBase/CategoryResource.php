@@ -17,9 +17,11 @@ class CategoryResource extends Resource
 
     protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-folder';
 
-    protected static ?string $navigationLabel = 'KB Categories';
+    protected static ?string $navigationLabel = 'Categories';
 
-    protected static ?int $navigationSort = 10;
+    protected static \UnitEnum|string|null $navigationGroup = 'Knowledge Base';
+
+    protected static ?int $navigationSort = 2;
 
     public static function form(Schema $schema): Schema
     {

@@ -12,7 +12,9 @@ class Settings extends Page
 {
     protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-cog-6-tooth';
 
-    protected static ?int $navigationSort = 100;
+    protected static \UnitEnum|string|null $navigationGroup = 'Settings';
+
+    protected static ?int $navigationSort = 1;
 
     protected static ?string $title = 'Settings';
 

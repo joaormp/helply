@@ -18,6 +18,8 @@ class MailboxResource extends Resource
 
     protected static ?string $navigationLabel = 'Mailboxes';
 
+    protected static \UnitEnum|string|null $navigationGroup = 'Channels';
+
     protected static ?int $navigationSort = 1;
 
     public static function form(Schema $schema): Schema

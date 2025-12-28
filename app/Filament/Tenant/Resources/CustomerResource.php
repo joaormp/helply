@@ -18,6 +18,8 @@ class CustomerResource extends Resource
 
     protected static ?string $navigationLabel = 'Customers';
 
+    protected static \UnitEnum|string|null $navigationGroup = 'Support';
+
     protected static ?int $navigationSort = 2;
 
     public static function form(Schema $schema): Schema

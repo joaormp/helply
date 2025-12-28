@@ -18,7 +18,7 @@ class CannedReplyResource extends Resource
 
     protected static ?string $navigationLabel = 'Canned Replies';
 
-    protected static \UnitEnum|string|null $navigationGroup = 'Knowledge';
+    protected static \UnitEnum|string|null $navigationGroup = 'Knowledge Base';
 
     protected static ?int $navigationSort = 3;
 
